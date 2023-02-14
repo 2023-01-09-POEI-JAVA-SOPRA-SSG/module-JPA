@@ -1,13 +1,18 @@
-package intro.jpa.entity;
+package manyToOne;
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity( name="Toto") @Table( name="users")
+@Entity @Table( name="users")
 public class User {
 	
 	@Id @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -24,7 +29,34 @@ public class User {
 	private int age;
 	
 	
+	@OneToMany
+	@JoinTable( name = "message_user_association",
+				joinColumns =  @JoinColumn(name ="id_user"),
+				inverseJoinColumns = @JoinColumn(name = "id_message"))
+	List<Message> messages;
 	
+	public List<Message> getMessages() {
+		return messages;
+	}
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+	}
+		
+	@OneToMany( targetEntity = Commande.class, mappedBy = "user" )
+	List<Commande> commandes;
+	
+	public void setCommandes(List<Commande> commandes) {
+		this.commandes = commandes;
+	}
+	public List<Commande> getCommandes() {
+		return commandes;
+	}
+	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", age="
+				+ age + "]";
+	}
 	
 
 	public User(String firstName, String lastName, String email, int age) {
@@ -88,11 +120,7 @@ public class User {
 		this.age = age;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", age="
-				+ age + "]";
-	}
+
 
 	
 	
