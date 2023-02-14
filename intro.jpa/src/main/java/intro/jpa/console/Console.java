@@ -60,7 +60,6 @@ public class Console {
 //            
 //            trans.commit();
             
-            
             // DELETE
 //	          User user = em.find(User.class, 5); 
 //	

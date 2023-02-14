@@ -14,10 +14,11 @@ public class Product {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	
 	private String name ;
 	
 	private String price ;
-	
+		
 	@OneToOne
 	@JoinColumn(name="id_product_details", nullable=false)
 	private ProductDetails productDetails;
@@ -71,5 +72,57 @@ public class Product {
 	}
 	
 	
-	
+
 }
+
+
+/**
+credential(
+	id
+
+	login,
+	password	
+)
+
+
+account (
+	id
+
+	first_name,
+	last_name,
+	DATE date_creation,
+	nombre_messages_envoyees
+	nombre_amis
+
+	credentials_id references credential(id)
+)
+
+
+> GET by id
+> GET ALL
+
+> CREATE
+
+> UPDATE
+
+> DELETE by id
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
