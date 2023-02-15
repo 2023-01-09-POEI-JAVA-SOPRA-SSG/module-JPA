@@ -26,6 +26,14 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>8.0.28</version>
 		</dependency>
+		
+		<!-- FAKER -->
+		<dependency>
+		    <groupId>com.github.javafaker</groupId>
+		    <artifactId>javafaker</artifactId>
+		    <version>1.0.1</version>
+		</dependency>
+		
   </dependencies>
   
   
